@@ -1,0 +1,38 @@
+<%- include('./header', {css:'css/style.css',title:title}) %>
+
+<form method="post" action="/done">
+ <div class="center row">
+      <% if (!isMade) { /*URL作成*/%>
+      <h2 id="discription" >入力したURLをhttp://11nk.ga/+4文字　の形式で短縮します</h2>
+      <br>
+        <div class="input-field col s12">
+          <input id="url" type="url" class="validate" name="input_url">
+          <label for="url">短縮したいURLを入力</label>
+        </div>
+      <input id="submit" type="submit" name="submit" value="短縮する" class="waves-effect waves-light btn">
+      <% } %>
+      <% if (isMade) { /*URL完成*/%>
+        <div class="input-field col s12">
+          <input id="made_url" type="url" class="validate" name="input_url" value="<%= url %>">
+        </div>
+      <a id="copy_btn"class="waves-effect waves-light btn">copy!</a>
+      <% } %>
+  </div>
+  <a href="/disclaimer">免責事項</a>
+  <div id="credit">
+    Created by:<a href="https://twitter.com/moscwa_" target="blank">moscwa</a><br>
+    Managed by:<a href="https://twitter.com/noeroti3" target="blank">のえろちさん</a>
+  </div>
+</form>
+<script>
+var btn=document.getElementById('copy_btn')
+if(btn){
+  btn.addEventListener('click',function(){
+    made_url.select()
+    document.execCommand('copy')
+  })
+}
+
+</script>
+</body>
+<html>
